@@ -6,7 +6,7 @@ import lk.ijse.gdse68.spring_web.introwithspringweb.config.WebAppConfig;
 import lk.ijse.gdse68.spring_web.introwithspringweb.config.WebAppRootConfig;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
-
+//dispatcher servlet ek create krgnne me extend eken //override method eke define krnn puluwan servlet ek
 public class AppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 //class name has all working types
 
