@@ -1,5 +1,7 @@
 package lk.ijse.gdse68.spring_web.introwithspringweb.controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -22,9 +24,16 @@ public class DemoController {
     //postman texting -http://localhost:8080/intro/demo/health/text =>>>/* tanat ona segment ekk set krnn puluwan
     //4.   @RequestMapping(value = "/health/**") path segment ekk set krnn puluwan
     //postman texting -http://localhost:8080/intro/demo/health/text/text =>>>/** tanat ona segment ekk set krnn puluwan
-    @RequestMapping(value = "/healt?") //same name mapping tiyenn ba
-    public String healthCheck(){
-        return "DemoController run perfectly !!!";
+
+//    @RequestMapping(value = "/health") //same name mapping tiyenn ba
+//    public String healthCheck(){
+//        return "DemoController run perfectly ;
+//    }
+
+    //set mapping parameter path variable ==req-http://localhost:8080/intro/demo/health/sachini ==>.resp->>DemoController run perfectly whith:sachini
+    @GetMapping(value = "/health/{name}")
+    public String healthCheck(@PathVariable ("name")String name){
+        return "DemoController run perfectly whith:"+name;
     }
 
     @RequestMapping
