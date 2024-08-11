@@ -14,11 +14,12 @@ public class AppInitializer extends AbstractAnnotationConfigDispatcherServletIni
     protected Class<?>[] getRootConfigClasses() {
         //config class 2kt wadiy tiynn puluwan -root or not root
         return new Class[]{WebAppRootConfig.class};
+        //hibernate,db ekkt bean ekk config krnn one nm //web app eke http req t adal nati ewa
     }
 
     @Override
     protected Class<?>[] getServletConfigClasses() {
-        return new Class[]{WebAppConfig.class};
+        return new Class[]{WebAppConfig.class};//web app eke http req t adal class danne
     }
 
     @Override
