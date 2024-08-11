@@ -31,9 +31,17 @@ public class DemoController {
 //    }
 
     //set mapping parameter path variable ==req-http://localhost:8080/intro/demo/health/sachini ==>.resp->>DemoController run perfectly whith:sachini
-    @GetMapping(value = "/health/{name}")
-    public String healthCheck(@PathVariable ("name")String name){
-        return "DemoController run perfectly whith:"+name;
+//    @GetMapping(value = "/health/{name}")
+//    public String healthCheck(@PathVariable ("name")String name){
+//        return "DemoController run perfectly whith:"+name;
+//    }
+
+    //validating -regex
+    //req--http://localhost:8080/intro/demo/regex/C400
+    //resp-->DemoController run perfectly whith:C400
+    @GetMapping(value = "/regex/{id:C\\d{3}}")
+    public String healthCheckRegex(@PathVariable ("id")String id){
+        return "DemoController run perfectly whith:"+id;
     }
 
     @RequestMapping
