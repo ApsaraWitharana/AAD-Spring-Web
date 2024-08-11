@@ -39,9 +39,18 @@ public class DemoController {
     //validating -regex
     //req--http://localhost:8080/intro/demo/regex/C400
     //resp-->DemoController run perfectly whith:C400
-    @GetMapping(value = "/regex/{id:C\\d{3}}")
+//    @GetMapping(value = "/regex/{id:C\\d{3}}")
+    //req-http://localhost:8080/intro/demo/regex/C00-001
+    @GetMapping(value = "/regex/{id:C\\d{2}-\\d{3}}")
     public String healthCheckRegex(@PathVariable ("id")String id){
         return "DemoController run perfectly whith:"+id;
+    }
+    //text-mapping--
+    //req-->http://localhost:8080/intro/demo?test=all
+    //resp-->>Text all Mapping !!
+    @GetMapping(params = "test=all")
+    public String healthCheckParam(){
+        return "Text all Mapping !!";
     }
 
     @RequestMapping
