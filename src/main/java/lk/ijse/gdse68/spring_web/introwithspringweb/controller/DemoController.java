@@ -66,6 +66,19 @@ public class DemoController {
         //problem (req) resole wen ekk
         //query string resolving
     }
+
+    //headers===>> artisanal information ==client sending ==application json //mine types ==data eke wargaya send krana
+    //origin header ==>> client kwd kiyl dom ek send krnwa url ekk
+    //authorization ==user name password /authentication
+    //addishanal information ekk send krnwa
+    //custom header= user yawan ewa ==// headers = "X-number"///X = convention ekk danawa ek custom ekk kiyl bala gnn
+    @GetMapping(value = "/regex/{id:C\\d{2}-\\d{3}}",headers = "X-number") //set
+    public String healthCheckRegexAndHeader(@PathVariable ("id")String id,@RequestHeader("X-number") int num){ //get header
+        return "Path variable is:"+id +"and Header"+ num;
+    }
+    //req==http://localhost:8080/intro/demo/regex/C00-001
+    //resp==Path variable is:C00-001and Header50
+    //Headers wal thamiy X-number ek danne
 }
 
 //annotation== method ekk data gide krn ek
