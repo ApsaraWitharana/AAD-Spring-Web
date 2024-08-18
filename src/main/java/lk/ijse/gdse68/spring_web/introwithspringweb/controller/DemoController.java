@@ -2,7 +2,10 @@ package lk.ijse.gdse68.spring_web.introwithspringweb.controller;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RequestMapping("/demo") //
 @RestController //meta annotation has controller annotation as this annotation has component annotation so this annotation as the managing to spring
@@ -103,7 +106,31 @@ public class DemoController {
     }
     //req--http://localhost:8080/intro/demo/dynamic/20
     //resp== Dynamic Data Even
+
+    //request
+    // 01
+    @PostMapping(value = "/mapparams" ,params = {"id","desc"})
+    public String handleMaps(@RequestParam("id") String id, @RequestParam("desc") String desc, @RequestParam Map<String,String> params){ //set method level prameter
+        System.out.println(params); //map eke utility funshion krgnn puluwa
+        // ym kisi stretcher ekkt data ek gnn ek meke map ekk widiyt data gtte
+        return "Handle Map With Param: "+ params;
+    }
+    // Map = data structure ekk widiyata --> Map<key,value>
+    // req= http://localhost:8080/intro/demo/mapparams?id=C00-001&desc=dusvi
+    //resp = Handle Map With Param: {id=C00-001, desc=dusvi} //map eke data ywann one me widiyt kiyl auto ynwa spring
+
+   // 02
+   @PostMapping(value = "/multimapparams" ,params = {"id","desc"})
+   public String handleMultiMaps(@RequestParam("id") String id, @RequestParam("desc") String desc, @RequestParam MultiValueMap<String,String> params){ //set method level prameter
+       System.out.println(params);
+       return "Handle Multi Map With Param: "+ params;
+   }
+   //req==http://localhost:8080/intro/demo/multimapparams?id=C00-001&desc=dusvi
+   //resp ==-Handle Multi Map With Param: {id=[C00-001], desc=[dusvi]} //multimap eke array ekk widiyta data ynne
+  //Map<[key],[value]> == this multi value map is use to spring as note using java
 }
+
+
 
 //annotation== method ekk data gide krn ek
 
