@@ -145,7 +145,8 @@ public class DemoController {
 
  //04
  @PostMapping(value = "/customer",consumes = MediaType.APPLICATION_JSON_VALUE)
- public String JSONToDTO(Customer customer){ //set request body eke mona hri enwa kiyl
+ public String JSONToDTO(@RequestBody Customer customer){ //set request body eke mona hri enwa kiyl
+// public String JSONToDTO( Customer customer){
      System.out.println("Customer ID: " + customer.getId());
      System.out.println("Customer Name: " + customer.getName());
      System.out.println("Customer Email: " + customer.getEmail());
