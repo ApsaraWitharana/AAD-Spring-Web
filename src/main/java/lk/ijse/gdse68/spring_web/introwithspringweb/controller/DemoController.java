@@ -1,5 +1,7 @@
 package lk.ijse.gdse68.spring_web.introwithspringweb.controller;
 
+import lk.ijse.gdse68.spring_web.introwithspringweb.dto.Customer;
+import lk.ijse.gdse68.spring_web.introwithspringweb.dto.Item;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
@@ -125,9 +127,39 @@ public class DemoController {
        System.out.println(params);
        return "Handle Multi Map With Param: "+ params;
    }
+
    //req==http://localhost:8080/intro/demo/multimapparams?id=C00-001&desc=dusvi
    //resp ==-Handle Multi Map With Param: {id=[C00-001], desc=[dusvi]} //multimap eke array ekk widiyta data ynne
   //Map<[key],[value]> == this multi value map is use to spring as note using java
+
+
+ //03 -map value set dto
+ @PostMapping(value = "/multimapparamstodto" ,params = {"id","desc"})
+ public String handleMultiMapsWithDTO(@RequestParam("id") String id, @RequestParam("desc") String desc, @RequestParam MultiValueMap<String,String> params , Item item){ //set method level prameter
+     System.out.println(params);
+     return "Handle Multi Map With DTO Param: "+ params;
+
+     //req =>http://localhost:8080/intro/demo/multimapparamstodto?id=C00-001&desc=dusvi
+     //resp==>>Handle Multi Map With DTO Param: {id=[C00-001], desc=[dusvi]}
+ }
+
+ //04
+ @PostMapping(value = "/customer",consumes = MediaType.APPLICATION_JSON_VALUE)
+ public String JSONToDTO(Customer customer){ //set request body eke mona hri enwa kiyl
+     System.out.println("Customer ID: " + customer.getId());
+     System.out.println("Customer Name: " + customer.getName());
+     System.out.println("Customer Email: " + customer.getEmail());
+        return "convert Successfully!!";
+
+        //req==>>http://localhost:8080/intro/demo/customer
+     //resp==>> convert Successfully!!
+     //but data as null
+     // Customer ID: null
+     //Customer Name: null
+     //Customer Email: null
+     //note bine
+
+    }
 }
 
 
