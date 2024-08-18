@@ -1,9 +1,6 @@
 package lk.ijse.gdse68.spring_web.introwithspringweb.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RequestMapping("/demo") //
 @RestController //meta annotation has controller annotation as this annotation has component annotation so this annotation as the managing to spring
@@ -57,8 +54,21 @@ public class DemoController {
     public String otherTest(){
         return "otherText!!";
     }
+
+    //request param
+    @PostMapping(params = {"name","qty"}) //set param
+    public String paramData(@RequestParam ("name") String param01,@RequestParam ("qty") String param02){ //get param
+        return "Param data is:" +param01 + " and "+param02;
+
+        //req postman-->http://localhost:8080/intro/demo?name=apple&qty=100
+        //resp -->> Param data is:apple and 100
+        //body parameter change  krl apit one widiyt hadagnn puluwan
+        //problem (req) resole wen ekk
+        //query string resolving
+    }
 }
 
+//annotation== method ekk data gide krn ek
 
 //Spring MVC Framework:
 
