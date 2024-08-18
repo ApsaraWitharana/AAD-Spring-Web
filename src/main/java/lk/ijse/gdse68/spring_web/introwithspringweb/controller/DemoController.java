@@ -1,6 +1,9 @@
 package lk.ijse.gdse68.spring_web.introwithspringweb.controller;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.awt.*;
 
 @RequestMapping("/demo") //
 @RestController //meta annotation has controller annotation as this annotation has component annotation so this annotation as the managing to spring
@@ -74,11 +77,23 @@ public class DemoController {
     //custom header= user yawan ewa ==// headers = "X-number"///X = convention ekk danawa ek custom ekk kiyl bala gnn
     @GetMapping(value = "/regex/{id:C\\d{2}-\\d{3}}",headers = "X-number") //set
     public String healthCheckRegexAndHeader(@PathVariable ("id")String id,@RequestHeader("X-number") int num){ //get header
-        return "Path variable is:"+id +"and Header"+ num;
+        return "Path variable is: "+id +" and Header: "+ num;
     }
     //req==http://localhost:8080/intro/demo/regex/C00-001
     //resp==Path variable is:C00-001and Header50
     //Headers wal thamiy X-number ek danne
+
+   // @PostMapping(consumes = "application/json" ) //set and client gen enne consumes
+   @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE) //json builder krgnn ekk enw kiyl
+    public String saveJSON(){
+        return "Save JSON";
+        //req -http://localhost:8080/intro/demo
+       //resp==>Save JSON
+       // Headers wal thamiy danne ==>>>>>>.Content-Type-->application/json
+
+    }
+
+
 }
 
 //annotation== method ekk data gide krn ek
