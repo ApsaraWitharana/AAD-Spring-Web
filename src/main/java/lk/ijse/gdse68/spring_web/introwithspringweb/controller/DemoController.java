@@ -1,9 +1,8 @@
 package lk.ijse.gdse68.spring_web.introwithspringweb.controller;
 
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.awt.*;
 
 @RequestMapping("/demo") //
 @RestController //meta annotation has controller annotation as this annotation has component annotation so this annotation as the managing to spring
@@ -94,6 +93,16 @@ public class DemoController {
     }
 
 
+    @PostMapping("/dynamic/{value:\\d{2}}")
+    public ResponseEntity<String> returnDynamicData(@PathVariable("value") int incomingValue){
+        if (incomingValue % 2 == 0){
+            return ResponseEntity.ok("Dynamic Data Even"); //client ta resp ek widiyata data kihipayk ywnn one unam use krgnn ResponseEntity use krnwa
+        }
+
+        return ResponseEntity.ok("Dynamic Data Odd");
+    }
+    //req--http://localhost:8080/intro/demo/dynamic/20
+    //resp== Dynamic Data Even
 }
 
 //annotation== method ekk data gide krn ek
